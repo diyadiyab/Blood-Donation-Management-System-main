@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Camp</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ffad33, #ff704d);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #e44d26;
+        }
+
+        select {
+            padding: 12px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: #f8f8f8;
+            color: #333;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #e44d26;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d14020;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Blood Donation Camp</h1>
+
+    <form id="bloodDonationCampForm">
+        <select id="state" name="state" onchange="updateDistricts()">
+            <!-- List of all states in India -->
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+        </select>
+
+        <select id="district" name="district">
+            <!-- Districts will be dynamically populated based on the selected state -->
+        </select>
+
+        <button type="button" onclick="scheduleBloodDonation()">Search camps</button>
+    </form>
+</div>
+
+<script>
+    function updateDistricts() {
+        var stateSelect = document.getElementById("state");
+        var districtSelect = document.getElementById("district");
+
+        // Clear existing options
+        districtSelect.innerHTML = "";
+
+        // Get selected state
+        var selectedState = stateSelect.options[stateSelect.selectedIndex].value;
+
+        // Populate districts based on the selected state
+        switch (selectedState) {
+            case "Kerala":
+                addDistrict("Alappuzha");
+                addDistrict("Ernakulam");
+                addDistrict("Idukki");
+                addDistrict("Kannur");
+                addDistrict("Kasaragod");
+                addDistrict("Kollam");
+                addDistrict("Kottayam");
+                addDistrict("Kozhikode");
+                addDistrict("Malappuram");
+                addDistrict("Palakkad");
+                addDistrict("Pathanamthitta");
+                addDistrict("Thiruvananthapuram");
+                addDistrict("Thrissur");
+                break;
+            // Add cases for other states
+        }
+    }
+
+    function addDistrict(district) {
+        var districtSelect = document.getElementById("district");
+        districtSelect.options.add(new Option(district, district.toLowerCase()));
+    }
+
+    function scheduleBloodDonation() {
+        var state = document.getElementById("state").value;
+        var district = document.getElementById("district").value;
+
+        // Redirect to campresult.html with the selected state and district as URL parameters
+        window.location.href = "/campresult?state=" + state + "&district=" + district;
+    }
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Camp</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url("{{ url_for('static', filename='opt2.jpg') }}"); /* Replace 'your-image-url.jpg' with the actual path to your image */
+            margin: 20px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #000; /* Change font color to black */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 400px;
+            margin-left: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #e44d26;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #000; /* Change font color to black */
+        }
+
+        .contact-info {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            margin: 8px 0;
+            color: #000; /* Change font color to black */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Blood Donation Camp</h1>
+    <p>Join us in saving lives. Your donation can make a difference!</p>
+
+    <form id="bloodDonationCampForm">
+        <!-- Add dropdowns for state and district as in the previous example -->
+    </form>
+
+    <div class="contact-info">
+        <h2>Contact Us</h2>
+        <p>Email: info@bloodbank.com</p>
+        <p>Phone: +1 234 567 890</p>
+        <p>Address: 123 Blood Drive, City, Country</p>
+    </div>
+</div>
+
+</body>
+</html>

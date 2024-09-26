@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Today</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Import Times New Roman font from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap">
+
+    <style>
+        /* Basic styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+            overflow-x: hidden; /* Add this to hide horizontal scrollbar */
+        }
+
+        header {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            font-family: 'Times New Roman', serif; /* Use Times New Roman for the main heading */
+        }
+
+        header h1 span {
+            font-family: 'Times New Roman', serif; /* Use Times New Roman for "Blood Bank Today" */
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: black; /* Change background color to black */
+            color: white;
+            padding: 10px 0;
+        }
+
+        /* Specific section styles */
+        #home {
+            /* Add background image and style */
+            background-image: url("{{ url_for('static', filename='webimg1.jpg') }}"); /* Replace 'your-image-url.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 0; /* Remove top and bottom padding */
+            margin-top: -20px; /* Adjust margin to cover the white space at the top */
+            margin-left: -20px; /* Remove left margin */
+            margin-right: -20px; /* Remove right margin */
+            height: 100vh; /* Set the height of the background image to 100% of the viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white; /* Set text color to white */
+        }
+
+        .hero {
+            max-width: 600px; /* Set a maximum width for better readability */
+            margin: 0 auto; /* Center the container */
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque white box */
+            border-radius: 15px; /* Add a subtle border-radius */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow */
+            padding: 30px; /* Increase padding for a more spacious feel */
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px; /* Increase the font size */
+            margin-bottom: 20px; /* Add some space below the heading */
+            color: #001f3f; /* Dark shade of blue */
+        }
+
+        .hero p {
+            font-size: 20px; /* Increase the font size */
+            margin-bottom: 20px; /* Add some space below the paragraph */
+            color: #001f3f; /* Dark shade of blue */
+        }
+
+        .hero .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            color: white;
+            background-color: #001f3f; /* Dark shade of blue */
+        }
+
+        .hero .btn:hover {
+            background-color: #003366; /* Slightly lighter shade on hover */
+        }
+
+        #about, #donate, #requests, #contact {
+            background-color: white;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: black;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: red;
+        }
+
+        /* New styles for vibrant boxes */
+        .box-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            flex: 1;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            /* Add cursor pointer for better UX */
+            cursor: pointer;
+            text-decoration: none; /* Remove underlining */
+            color: black; /* Set text color to black */
+        }
+
+        /* Colors for vibrant boxes */
+        #about {
+            background-color: #FF69B4; /* Pink */
+        }
+
+        #donate {
+            background-color: #87CEEB; /* Sky Blue */
+        }
+
+        #requests {
+            background-color: #98FB98; /* Pale Green */
+        }
+
+        #contact {
+            background-color: #FFD700; /* Gold */
+        }
+
+        .box:hover {
+            background-color: #FF4500; /* Dark Orange on hover */
+        }
+
+        .box h2, .box p {
+            margin: 0;
+            font-weight: normal; /* Set font weight to normal */
+            font-size: 16px; /* Set font size to your preference */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Title on the top left corner -->
+        <h1><span>Blood Bank Today</span></h1>
+
+        <!-- Navigation Bar on the top right corner -->
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="#requests">Requests</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" >
+            <div class="hero">
+            <div class="hero">
+                <h1>Welcome to Blood Bank Today</h1>
+                <p>Help save lives by donating blood.</p>
+                <a href="#donate" class="btn">Donate Now</a>
+            </div>
+        </section>
+
+        <!-- Vibrant Boxes Section -->
+        <section class="box-container">
+            <!-- Blood Availability Box -->
+            <a href="{{ url_for('index') }}" class="box" id="donate">
+                <h2>Blood Availability</h2>
+            </a>
+
+            <!-- Donate Blood Box -->
+            <a href="{{ url_for('register_donor') }}" class="box" id="donate">
+                <h2>Donate Blood</h2>
+                <form action="submit_blood_request" method="post">
+                    <!-- Donation Form Fields -->
+                </form>
+            </a>
+
+            <!-- Blood Requests Box -->
+            <a href="{{ url_for('emergency_requests') }}" class="box" id="requests">
+                <h2>Emergency Blood Requests</h2>
+            </a>
+
+            <!-- Blood Donation Camp Box -->
+            <a href="{{ url_for('campdetails') }}" class="box" id="contact">
+                <h2>Blood Donation Camp</h2>
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Blood Bank Today. All rights reserved.</p>
+    </footer>
+</body>
+</html>

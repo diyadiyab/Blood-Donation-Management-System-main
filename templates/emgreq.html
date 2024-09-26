@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Blood Request</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+      
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .need-button {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .request-button {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        .icon-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Emergency Blood Request</h1>
+
+    <div style="background-image: url('/static/reqqq.jpg');">
+
+    <div class="button-container">
+        <a href="{{ url_for('blood_request_form') }}">
+            <button class="button need-button icon-button">
+                <span class="icon">🩸</span> Need Blood
+            </button>
+        </a>
+
+    <a href="{{ url_for('display_requests') }}">
+        <button class="button request-button icon-button">
+            <span class="icon">🆘</span> Request Blood
+        </button>
+    </a>    
+    </div>
+</div>
+
+</body>
+</html>
+
+

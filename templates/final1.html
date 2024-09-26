@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Life's Brightest Gift" - Donate Blood Today!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: linear-gradient(to right, #ffcccc, #ffcc99);
+            animation: pulse 3s infinite ease-in-out;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        @keyframes pulse {
+            0% {
+                background-position: center;
+            }
+            50% {
+                background-position: 5px 5px;
+            }
+            100% {
+                background-position: center;
+            }
+        }
+
+        .container {
+            width: 350px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h2.header-text {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #ff4d4d;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"],
+        .signup-link {
+            width: calc(100% - 20px);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            transition: all 0.2s ease-in-out;
+            color: #333;
+        }
+
+        input[type="text"]:hover,
+        input[type="password"]:hover,
+        input[type="submit"]:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="submit"] {
+            background-color: #ff4d4d;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+        }
+
+        .signup-link {
+            text-align: center;
+            text-decoration: none;
+            color: #ff4d4d;
+            display: block;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="header-text">"Be a Hero, Donate Blood"</h2>
+        <form action="login_process.php" method="POST">
+            <input type="text" name="username" placeholder="Your Name" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+        <a href="signup.php" class="signup-link">Not a user? Sign Up</a>
+    </div>
+</body>
+
+</html>

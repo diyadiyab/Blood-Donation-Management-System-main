@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Availability</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 80%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #e44d26;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Blood Availability</h1>
+    <h3>Fetched Results:</h3>
+    <table id="bloodAvailabilityTable"></table>
+    <div id="errorMessage"></div>
+
+    <script>
+      var searchResults = {{ results | tojson | safe }};
+      displayResults(searchResults);
+
+      function displayResults(results) {
+        var table = document.getElementById('bloodAvailabilityTable');
+        var errorMessageDiv = document.getElementById('errorMessage');
+
+        if (!results || results.length === 0) {
+          errorMessageDiv.innerHTML = "<strong>No results found.</strong>";
+        } else {
+          var tableHeader = "<tr><th>Hospital Name</th><th>Donor Name</th><th>Contact Number</th><th>State</th><th>District</th><th>Blood Group</th><th>Blood Component</th></tr>";
+          table.innerHTML = tableHeader;
+
+          results.forEach(function(result) {
+            var row = "<tr>" +
+              "<td>" + result.hospital_name + "</td>" +
+              "<td>" + result.donor_name + "</td>" +
+              "<td>" + result.contact_number + "</td>" +
+              "<td>" + result.state + "</td>" +
+              "<td>" + result.district + "</td>" +
+              "<td>" + result.blood_group + "</td>" +
+              "<td>" + result.blood_component + "</td>" +
+            "</tr>";
+
+            table.innerHTML += row;
+          });
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>
